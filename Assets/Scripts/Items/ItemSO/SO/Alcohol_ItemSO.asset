@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Alcohol
   itemDescription: Alcohol_Description
   itemType: 0
-  icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 7012a0687a7892b41abf2e4dd3e9d2c9, type: 3}
   dropPrefab: {fileID: 3355587520784548334, guid: 9b5cf0f4846e199419d879db28545239, type: 3}
   stackable: 1
   maxStackAmount: 10
