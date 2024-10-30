@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95ebc4d400995fc44ac01f6c4cd25804, type: 3}
-  m_Name: Alcohol_ItemSO
+  m_Name: Mug_ItemSO
   m_EditorClassIdentifier: 
-  itemName: Alcohol
-  itemDescription: Alcohol_Description
+  itemName: Mug
+  itemDescription: Mug_Description
   itemType: 0
   icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  dropPrefab: {fileID: 3355587520784548334, guid: 9b5cf0f4846e199419d879db28545239, type: 3}
+  dropPrefab: {fileID: 6279427171178380632, guid: 089ff299e2eed6f49bfe40b0630209bd, type: 3}
   stackable: 1
   maxStackAmount: 10
   consumableItems:
-  - type: 1
+  - type: 0
     value: 10

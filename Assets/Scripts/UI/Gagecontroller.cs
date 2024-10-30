@@ -8,7 +8,7 @@ public class Gagecontroller : MonoBehaviour
     public Gage StaminaGage;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         GameManger.Instance.Player.PlayerGage.controller = this;
     }

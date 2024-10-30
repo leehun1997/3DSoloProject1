@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +18,7 @@ public class PlayerInputSystem : MonoBehaviour
     public float maxXLook;
     private float camCurXRot; //위아래의 회전은 플레이어를 돌릴 수 없기 때문에
     private Vector2 mouseDelta;
+    public bool canLook = true;
 
     [Header("ForJump")]
     public float jumpPower;
@@ -23,6 +26,7 @@ public class PlayerInputSystem : MonoBehaviour
     private Rigidbody rb;
     private Camera camera;
     public LayerMask groundLayerMask;
+    public Action inventory;
 
 
     private void Awake()
@@ -44,7 +48,10 @@ public class PlayerInputSystem : MonoBehaviour
 
     private void LateUpdate()
     {
-        Look();
+        if (canLook)
+        {
+            Look();
+        }
     }
 
     void Move()
@@ -88,13 +95,21 @@ public class PlayerInputSystem : MonoBehaviour
             rb.AddForce(new Vector3(0,jumpPower,0),ForceMode.Impulse);//왜 ForceMode를 안넣으면 작동을 안하는가?
         }
     }
-    public void OnInteraction(InputAction.CallbackContext context)
-    {
 
-    }
     public void OnInventory(InputAction.CallbackContext context)
     {
+        if(context.phase == InputActionPhase.Started)
+        {
+            inventory?.Invoke();
+            ToggleCursor();
+        }
+    }
 
+    void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
     }
 
     bool isGround()

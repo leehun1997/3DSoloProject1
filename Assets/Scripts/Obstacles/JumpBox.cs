@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class JumpBox : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float jumpForce;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(other.tag == "Player")
+        {
+            Rigidbody rb = other.GetComponent<Rigidbody>();
+            rb.AddForce(new Vector3(0,jumpForce,0),ForceMode.Impulse);
+        }
     }
 }
