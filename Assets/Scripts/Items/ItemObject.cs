@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IInteractable
 {
     public string GetInteractPrompt();
-    public void OnInterAct();
+    public void OnInteract();
 }
 
 public class ItemObject : MonoBehaviour, IInteractable
@@ -21,7 +21,7 @@ public class ItemObject : MonoBehaviour, IInteractable
         return str;
     }
 
-    public void OnInterAct()
+    public void OnInteract()
     {
         GameManger.Instance.Player.itemData = ItemData;
         GameManger.Instance.Player.addItem?.Invoke();

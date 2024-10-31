@@ -1,13 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGage : MonoBehaviour
+public interface IDamageable
+{
+    void TakePhysicalDamage(int damage);
+}
+
+public class PlayerGage : MonoBehaviour,IDamageable
 {
     public Gagecontroller controller;
 
     Gage hp { get { return controller.HPGage; } }
     Gage stamina { get { return controller.StaminaGage; } }
+
+    public Action onTakeDamage;
 
     // Update is called once per frame
     void Update()
@@ -25,5 +33,11 @@ public class PlayerGage : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GameOver.");
+    }
+
+    public void TakePhysicalDamage(int damage)
+    {
+        hp.ChangeGage((int)damage);
+        onTakeDamage?.Invoke();
     }
 }
