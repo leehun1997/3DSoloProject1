@@ -22,7 +22,8 @@ public class Interaction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main;   
+        camera = Camera.main;
+        promptText = GameManger.Instance.UI.GetComponent<UIController>().promptText;
     }
 
     // Update is called once per frame

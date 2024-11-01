@@ -24,6 +24,8 @@ public class GameManger : MonoBehaviour
         set { _player = value; }
     }
 
+    public GameObject UI;
+
     private void Awake()
     {
         if(_instance == null)
@@ -42,7 +44,8 @@ public class GameManger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UI =  Resources.Load<GameObject>("Prefabs/_UI");
+        Instantiate(UI);
     }
 
     // Update is called once per frame
